@@ -16,6 +16,28 @@
     width: 25%;
 }
 
+.edit-user-title{
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.user-table{
+    width: 100%;
+    margin-top: 20px;
+}
+
+th{
+    width: 20%;
+    text-align: left;
+    border-bottom: 2px solid black;
+}
+
+.user-list-container{
+    padding: 20px;
+    font-family: Montserrat;
+    width: 40%;
+}
+
 .user-form-container{
     display: flex;
     flex-direction: column;
@@ -33,4 +55,9 @@ input{
 
 select{
     margin-bottom: 15px;
+}
+
+.update-buttons{
+    display: flex;
+    justify-content: space-evenly;
 }

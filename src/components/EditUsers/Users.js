@@ -5,10 +5,11 @@ import "./Users.css"
 
 function EditUsers() {
 
+    // initialize state values
     let [users, setUsers] = useState({})
     let [currentKey, setCurrentKey] = useState('')
 
-
+    // set value of users after render
     useEffect(() => {
         firebaseDb.child('users').on("value", cb => {
             if (cb.val() != null)
@@ -18,19 +19,31 @@ function EditUsers() {
         })
     }, [])
 
+    // adds new user to db is currentKey is empty meaning no user is selected
+    // updates user values if currentKey is the key of an existing user
     const addAndEdit = obj => {
-        firebaseDb.child('users').push(obj)
+        if (currentKey === "")
+            firebaseDb.child('users').push(obj)
+        else
+            firebaseDb.child(`users/${currentKey}`).set(obj)
+        setCurrentKey("")
     }
+
+    const deleteUser = key => {
+        firebaseDb.child(`users/${key}`).remove()
+    }
+
+    console.log('users', Object.keys(users))
 
     return (
         <>
             <div className="container-div">
                 <div className="new-user-container">
-                    <div>Add user</div>
-                    <UserForm addAndEdit={addAndEdit} />
+                    <div>Add or update user</div>
+                    <UserForm {...({ addAndEdit, currentKey, users })} />
                 </div>
                 <div className="user-list-container">
-                    <div className="edit-user-title">Edit or delete user</div>
+                    <div className="edit-user-title">Users</div>
                     <div className="user-list-div">
                         <table className="user-table">
                             <thead className="table-header">
@@ -50,11 +63,11 @@ function EditUsers() {
                                             <td>{users[key].lastName}</td>
                                             <td>{users[key].sex}</td>
                                             <td>{users[key].birthday}</td>
-                                            <td>
+                                            <td className="update-buttons">
                                                 <a className="edit-delete-button" onClick={() => setCurrentKey(key)}>
                                                     <i className="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <a className="edit-delete-button">
+                                                <a className="edit-delete-button" onClick={() => deleteUser(key)}>
                                                     <i className="fas fa-trash-alt"></i>
                                                 </a>
                                             </td>
