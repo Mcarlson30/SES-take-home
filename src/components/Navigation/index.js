@@ -11,7 +11,7 @@ function Navigation() {
                 <ul class="navbar-nav">
                     <li><a className="link-tag" href="user-data">USER DATA</a>
                     </li>
-                    <li><a className="link-tag" href="edit-user">EDIT USERS</a>
+                    <li><a className="link-tag" href="edit-users">EDIT USERS</a>
                     </li>
                     <li><a className="link-tag" href="contact">CONTACT</a>
                     </li>

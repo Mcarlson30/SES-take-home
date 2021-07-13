@@ -1,0 +1,36 @@
+.edit-delete-button:hover{
+    cursor: pointer;
+}
+
+.container-div{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.new-user-container{
+    padding: 20px;
+    font-size: x-large;
+    font-weight: bold;
+    font-family: Montserrat;
+    width: 25%;
+}
+
+.user-form-container{
+    display: flex;
+    flex-direction: column;
+}
+
+form{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    margin-bottom: 15px;
+}
+
+select{
+    margin-bottom: 15px;
+}
