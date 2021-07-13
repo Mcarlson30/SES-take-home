@@ -1,0 +1,40 @@
+.outter-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.filter-container{
+    padding: 20px;
+    width: 10%;
+}
+
+.filter-input{
+    margin-top: 15px;
+}
+
+.age-and-list-container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.all-user-list-container{
+    margin-top: 15px;
+}
+
+.user-list-table{
+    width: 100%;
+}
+
+.age-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.age-title{
+    font-size: large;
+    font-weight: bold;
+}
