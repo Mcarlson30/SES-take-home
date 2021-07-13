@@ -46,12 +46,12 @@ function UserForm(props) {
     return (
         <div className="user-form-conainter">
             <form autoComplete="off" onSubmit={handleSubmit}>
-                <input className="form-input" allowNull={false} placeholder="First Name" name="firstName"
-                    value={values.firstName} onChange={handleInputChange} />
-                <input className="form-input" allowNull={false} placeholder="Last Name" name="lastName"
-                    value={values.lastName} onChange={handleInputChange} />
+                <input className="form-input" required={true} placeholder="First Name" name="firstName"
+                    value={values.firstName || ""} onChange={handleInputChange} />
+                <input className="form-input" required={true} placeholder="Last Name" name="lastName"
+                    value={values.lastName || ""} onChange={handleInputChange} />
                 <select className="form-input" name="sex"
-                    value={values.sex} onChange={handleInputChange}>
+                    value={values.sex || ""} onChange={handleInputChange}>
                     <option value="">Select Option</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -60,7 +60,7 @@ function UserForm(props) {
                     <option value="Prefer not to say">Prefer not to say</option> */}
                 </select>
                 <input className="form-input" name="birthday"
-                    value={values.birthday} type="date" onChange={handleInputChange} />
+                    value={values.birthday || ""} type="date" onChange={handleInputChange} />
                 <input type="submit" value={props.currentKey === "" ? "Save" : "Update"} />
             </form>
         </div>

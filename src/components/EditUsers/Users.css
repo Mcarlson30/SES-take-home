@@ -2,6 +2,11 @@
     cursor: pointer;
 }
 
+button{
+    border-style: none;
+    background-color: white;
+}
+
 .container-div{
     display: flex;
     width: 100%;

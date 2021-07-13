@@ -29,6 +29,7 @@ function EditUsers() {
         setCurrentKey("")
     }
 
+    // remove user with "key" from users
     const deleteUser = key => {
         firebaseDb.child(`users/${key}`).remove()
     }
@@ -64,12 +65,12 @@ function EditUsers() {
                                             <td>{users[key].sex}</td>
                                             <td>{users[key].birthday}</td>
                                             <td className="update-buttons">
-                                                <a className="edit-delete-button" onClick={() => setCurrentKey(key)}>
+                                                <button className="edit-delete-button" onClick={() => setCurrentKey(key)}>
                                                     <i className="fas fa-pencil-alt"></i>
-                                                </a>
-                                                <a className="edit-delete-button" onClick={() => deleteUser(key)}>
+                                                </button>
+                                                <button className="edit-delete-button" onClick={() => deleteUser(key)}>
                                                     <i className="fas fa-trash-alt"></i>
-                                                </a>
+                                                </button>
                                             </td>
                                         </tr>
                                     })
