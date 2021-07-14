@@ -6,11 +6,11 @@ function AllUsers() {
 
     // initialize state values
     let [users, setUsers] = useState({});
-    let [youngest, setYoungest] = useState(1000);
-    let [oldest, setOldest] = useState(0);
-    let [average, setAverage] = useState()
     let [filter, setFilter] = useState("All")
     let [filteredUsers, setFilteredUsers] = useState(users)
+    let oldest = 0
+    let youngest = 1000
+    let average = 0
 
     // set value of users after render
     useEffect(() => {
@@ -20,7 +20,6 @@ function AllUsers() {
                     ...cb.val()
                 })
         })
-        // setFilteredUsers(Object.values(users))
     }, [])
 
     // find the age of the user and compare to oldest and youngest of 
@@ -36,9 +35,6 @@ function AllUsers() {
         return age;
     }
 
-    // console.log('age: ' + findAge("1980-08-10"));
-    // console.log('users', filteredUsers)
-
     const handleSelectChange = (e) => {
         let { value } = e.target
         setFilter(value)
@@ -46,24 +42,20 @@ function AllUsers() {
     }
 
     // set ages using filtered user list
-    useEffect(() => {
-        if (filter === "All") {
-            let userList = Object.values(users)
-            console.log('userlist', Object.values(users))
-            // for (let i = 0; userList.length; i++) {
-            //     let age = findAge(userList[i].birthday)
-            //     if (age > oldest) {
-            //         setOldest(age)
-            //     }
-            //     if (age < youngest) {
-            //         setYoungest(age)
-            //     }
-            //     average += age;
-            // }
-            // average /= userList.length
+    const setAges = (userList) => {
+        average = 0
+        for (let i = 0; i < userList.length; i++) {
+            let age = findAge(userList[i].birthday)
+            if (age > oldest) {
+                oldest = age
+            }
+            if (age < youngest) {
+                youngest = age
+            }
+            average += age
         }
-
-    }, [filter])
+        average = Math.round(average / userList.length)
+    }
 
 
     // filter users by sex assigned to filteredUsers
@@ -72,19 +64,16 @@ function AllUsers() {
             setFilteredUsers(Object.values(users))
         } else if (filter === "Male") {
             setFilteredUsers(Object.values(users).filter(user => user.sex === "Male"))
-            console.log('filterdelif', filteredUsers)
         } else {
             setFilteredUsers(Object.values(users).filter(user => user.sex === "Female"))
-            // setAges(Object.values(users))
         }
     }, [filter, users])
 
-    // console.log('filtered', filteredUsers)
     return (
         <>
             <div className="outter-container">
                 <div className="filter-container">
-                    <div className="filter-title">Filter</div>
+                    <div className="filter-title">Filter by sex</div>
                     <select className="filter-input" name="sex" value={filter}
                         onChange={handleSelectChange}>
                         <option value="All">All</option>
@@ -93,6 +82,12 @@ function AllUsers() {
                     </select>
                 </div>
                 <div className="age-and-list-container">
+                    {filter === "All" ? setAges(Object.values(users))
+                        : setAges(filteredUsers)
+                    }
+                    <div className="age-container-title">
+                        User Ages
+                    </div>
                     <div className="age-container">
                         <div className="youngest-div">
                             <div className="age-title">
@@ -136,6 +131,7 @@ function AllUsers() {
                                     })
                                     :
                                     Object.values(filteredUsers).map(user => {
+                                        setAges(filteredUsers)
                                         return <tr key={user.firstName}>
                                             <td>{user.firstName}</td>
                                             <td>{user.lastName}</td>

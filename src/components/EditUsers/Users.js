@@ -34,7 +34,7 @@ function EditUsers() {
         firebaseDb.child(`users/${key}`).remove()
     }
 
-    console.log('users', Object.keys(users))
+    // console.log('users', Object.keys(users))
 
     return (
         <>

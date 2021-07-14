@@ -1,0 +1,60 @@
+.contact-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.name-container{
+    color: red;
+    font-size: xx-large;
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-information{
+    margin-top: 10%;
+    background-color: black;
+    height: 50%;
+    width: 30%;
+    border: 3px solid red;
+}
+
+.phone-number-container{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.phone-number-title{
+    font-size: x-large;
+    padding: 10px;
+    text-align: center;
+}
+
+.phone-number{
+    font-size: large;
+    text-align: center;
+}
+
+.email-container{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.email-title-container{
+    font-size: x-large;
+    padding: 10px;
+    text-align: center;
+}
+
+.email{
+    font-size: large;
+    text-align: center;
+}
