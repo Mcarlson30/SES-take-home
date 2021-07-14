@@ -22,8 +22,7 @@ function AllUsers() {
         })
     }, [])
 
-    // find the age of the user and compare to oldest and youngest of 
-    // all users
+    // return the age based on string birthdate given
     const findAge = (date) => {
         let todayDate = new Date();
         let birthDate = new Date(date);
@@ -41,7 +40,7 @@ function AllUsers() {
 
     }
 
-    // set ages using filtered user list
+    // set age variables given a list of users
     const setAges = (userList) => {
         average = 0
         for (let i = 0; i < userList.length; i++) {
